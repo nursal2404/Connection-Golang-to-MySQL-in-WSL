@@ -64,4 +64,23 @@ Now, you will create a new MySQL user that is allowed to connect from your WSL i
 
 > 🔥 **Important**: Replace `Your_WSL_IP_Address` with the IP address you found in Step 1 (e.g., `172.25.112.1`).
 
+### 4. Update Golang Database Connection (`dsn`)
+In your Golang project, update your database connection string (`dsn`) like below:
+
+Original example:
+
+```go
+dsn := "mysql_wsl_username:mysql_wsl_password@tcp(localhost:3306)/dbname"
+```
+
+You must **replace `localhost` with your WSL IP Address (from Windows)**.
+
+Updated example:
+
+```go
+dsn := "mysql_wsl_username:mysql_wsl_password@tcp(172.25.112.1:3306)/dbname"
+```
+
+> 🚀 **Note:** Replace `172.25.112.1` with your actual WSL IP found in Step 2.
+
 Happy coding with Golang and WSL! 🚀
